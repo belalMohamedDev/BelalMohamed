@@ -1,51 +1,488 @@
+/* ─────────────────────────────────────────────────────────
+   animations.css
+   Minimal, professional scroll-reveal + micro-interactions
+   Only uses transform and opacity for GPU-composited perf.
+   ───────────────────────────────────────────────────────── */
+
+
+/* ══════════════════════════════════════════════════════════
+   UTILITY KEYFRAMES
+   ══════════════════════════════════════════════════════════ */
+
 @keyframes blink {
-  50% {
-    opacity: 0;
-  }
+  50% { opacity: 0; }
 }
 
-@keyframes floatIn {
-  from {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(0);   }
+  50%       { transform: translateY(-8px); }
 }
 
+@keyframes brandShimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+@keyframes timelinePulse {
+  0%, 100% { opacity: 0.6; transform: scale(1);    }
+  50%       { opacity: 1;   transform: scale(1.15); }
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   SCROLL REVEAL  — hidden state
+   All variants: invisible + offset. JS adds .is-visible.
+   Using CSS transitions (not animation) for reliability.
+   ══════════════════════════════════════════════════════════ */
+
+.reveal,
+.reveal-left,
+.reveal-right,
+.reveal-scale {
+  will-change: transform, opacity;
+}
+
+/* default: fade up */
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
-  transition: transform 0.6s cubic-bezier(0.2, 0.6, 0.2, 1), opacity 0.6s ease;
+  transform: translateY(26px);
+  transition:
+    opacity   0.6s ease-out,
+    transform 0.6s ease-out;
 }
 
-.reveal.is-visible {
+/* slide from left */
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition:
+    opacity   0.65s ease-out,
+    transform 0.65s ease-out;
+}
+
+/* slide from right */
+.reveal-right {
+  opacity: 0;
+  transform: translateX(30px);
+  transition:
+    opacity   0.65s ease-out,
+    transform 0.65s ease-out;
+}
+
+/* subtle scale-in */
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.94);
+  transition:
+    opacity   0.55s ease-out,
+    transform 0.55s ease-out;
+}
+
+/* ── Visible state (added by JS) ── */
+.reveal.is-visible,
+.reveal-left.is-visible,
+.reveal-right.is-visible,
+.reveal-scale.is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
 }
 
-.btn:hover,
+
+/* ══════════════════════════════════════════════════════════
+   STAGGER DELAYS  (applied to direct grid/list children)
+   ══════════════════════════════════════════════════════════ */
+
+.stagger-1  { transition-delay: 0.04s; }
+.stagger-2  { transition-delay: 0.10s; }
+.stagger-3  { transition-delay: 0.16s; }
+.stagger-4  { transition-delay: 0.22s; }
+.stagger-5  { transition-delay: 0.28s; }
+.stagger-6  { transition-delay: 0.34s; }
+.stagger-7  { transition-delay: 0.40s; }
+.stagger-8  { transition-delay: 0.46s; }
+.stagger-9  { transition-delay: 0.52s; }
+.stagger-10 { transition-delay: 0.58s; }
+.stagger-11 { transition-delay: 0.64s; }
+
+
+/* ══════════════════════════════════════════════════════════
+   SECTION HEADING UNDERLINE
+   ══════════════════════════════════════════════════════════ */
+
+.section-head h2 {
+  position: relative;
+  display: inline-block;
+}
+
+.section-head h2::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--accent) 0%,
+    var(--color-2) 60%,
+    transparent 100%
+  );
+  border-radius: 2px;
+  transition: width 0.7s ease-out 0.3s;
+}
+
+.section-head.is-visible h2::after {
+  width: 100%;
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   HERO
+   ══════════════════════════════════════════════════════════ */
+
+.hero-panel {
+  animation: heroFloat 5s ease-in-out infinite;
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   BRAND MARK  — shimmer sweep
+   ══════════════════════════════════════════════════════════ */
+
+.brand-mark {
+  position: relative;
+  overflow: hidden;
+}
+
+.brand-mark::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(
+    90deg,
+    transparent   0%,
+    rgba(255,255,255,0.3) 50%,
+    transparent   100%
+  );
+  background-size: 200% 100%;
+  animation: brandShimmer 3s ease-in-out infinite;
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   NAV  — underline slide-in on hover
+   ══════════════════════════════════════════════════════════ */
+
+.nav-link {
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 2px;
+  transform: translateX(-50%);
+  transition: width 0.22s ease-out;
+}
+
+.nav-link:hover::after { width: 50%; }
+
+
+/* ══════════════════════════════════════════════════════════
+   BUTTONS  — scale + shine sweep
+   ══════════════════════════════════════════════════════════ */
+
+.btn {
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform  0.2s ease-out,
+    box-shadow 0.2s ease-out;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.18) 50%,
+    transparent 100%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+}
+
+.btn:hover::before { transform: translateX(100%); }
+
+.btn:active {
+  transform: translateY(0) scale(0.99);
+  transition-duration: 0.1s;
+}
+
 .btn:focus-visible {
-  transform: translateY(-2px) scale(1.01);
-  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.16);
+  outline: 2px solid var(--accent-strong);
+  outline-offset: 3px;
 }
 
-.project-card:hover,
-.project-card:focus-within {
-  transform: translateY(-5px);
-  border-color: color-mix(in srgb, var(--accent) 60%, var(--border));
+
+/* ══════════════════════════════════════════════════════════
+   CARDS  — lift on hover
+   ══════════════════════════════════════════════════════════ */
+
+/* Generic card */
+.card {
+  transition:
+    transform    0.25s ease-out,
+    border-color 0.25s ease-out;
 }
 
-.skill-card {
-  transition: transform 0.2s ease, border-color 0.2s ease;
+.card:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
 }
 
-.skill-card:hover {
-  transform: translateY(-3px);
+/* Project card */
+.project-card {
+  transition:
+    transform    0.28s ease-out,
+    border-color 0.28s ease-out,
+    box-shadow   0.28s ease-out;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
   border-color: color-mix(in srgb, var(--accent) 50%, var(--border));
+  box-shadow: 0 16px 40px color-mix(in srgb, var(--accent) 14%, transparent);
 }
+
+/* Project cover image zoom */
+.project-cover {
+  overflow: hidden;
+}
+
+.project-cover img {
+  transition: transform 0.4s ease-out;
+  will-change: transform;
+}
+
+.project-card:hover .project-cover img {
+  transform: scale(1.05);
+}
+
+/* Project links */
+.project-links a {
+  transition: color 0.18s ease, gap 0.18s ease;
+}
+
+.project-links a:hover {
+  color: var(--accent-strong);
+  gap: 0.5rem;
+}
+
+/* Service card */
+.service-card {
+  transition:
+    transform    0.25s ease-out,
+    border-color 0.25s ease-out;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  border-color: color-mix(in srgb, var(--accent) 44%, var(--border));
+}
+
+/* Service icon */
+.service-icon {
+  transition: transform 0.25s ease-out;
+}
+
+.service-card:hover .service-icon {
+  transform: scale(1.12) rotate(6deg);
+}
+
+/* Feedback card */
+.feedback-card {
+  transition:
+    transform    0.25s ease-out,
+    border-color 0.25s ease-out;
+}
+
+.feedback-card:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--accent) 44%, var(--border));
+}
+
+/* Education card */
+.education-card {
+  transition:
+    transform    0.25s ease-out,
+    border-color 0.25s ease-out;
+}
+
+.education-card:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--accent) 44%, var(--border));
+}
+
+.education-icon {
+  transition: transform 0.25s ease-out;
+}
+
+.education-card:hover .education-icon {
+  transform: scale(1.15) rotate(-5deg);
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   TIMELINE
+   ══════════════════════════════════════════════════════════ */
+
+.timeline-item {
+  transition:
+    transform    0.25s ease-out,
+    border-color 0.25s ease-out;
+}
+
+.timeline-item:hover {
+  transform: translateX(6px);
+  border-color: color-mix(in srgb, var(--accent) 46%, var(--border));
+}
+
+/* Timeline dot pulse */
+.timeline-item::before {
+  animation: timelinePulse 2.5s ease-in-out infinite;
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   SKILLS
+   ══════════════════════════════════════════════════════════ */
+
+.skill-group {
+  transition:
+    transform    0.25s ease-out,
+    border-color 0.25s ease-out;
+  overflow: hidden;
+}
+
+.skill-group::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.skill-group:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--accent) 36%, transparent);
+}
+
+.skill-group:hover::before { opacity: 1; }
+
+/* Skill tags */
+.skill-tags li {
+  transition:
+    transform    0.2s ease-out,
+    background   0.2s ease,
+    border-color 0.2s ease;
+}
+
+.skill-tags li:hover {
+  transform: translateY(-2px);
+  background: var(--surface);
+  border-color: color-mix(in srgb, var(--accent) 52%, transparent);
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   ABOUT TAGS
+   ══════════════════════════════════════════════════════════ */
+
+.about-tags li {
+  transition:
+    transform  0.2s ease-out,
+    background 0.2s ease;
+}
+
+.about-tags li:hover {
+  transform: translateY(-2px);
+  background: color-mix(in srgb, var(--accent) 24%, var(--surface));
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   CONTACT LIST LINKS
+   ══════════════════════════════════════════════════════════ */
+
+.contact-list a {
+  display: inline-block;
+  transition: color 0.18s ease, transform 0.18s ease;
+}
+
+.contact-list a:hover {
+  color: var(--accent-strong);
+  transform: translateX(4px);
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   HEADER  — subtle shadow on scroll
+   ══════════════════════════════════════════════════════════ */
+
+.site-header {
+  transition:
+    box-shadow  0.35s ease,
+    background  0.35s ease,
+    border-color 0.35s ease;
+}
+
+.site-header.scrolled {
+  box-shadow: 0 6px 28px -4px color-mix(in srgb, var(--text) 16%, transparent);
+}
+
+/* Theme toggle */
+.theme-toggle {
+  transition: transform 0.25s ease, background 0.2s ease;
+}
+
+.theme-toggle:hover {
+  transform: rotate(18deg) scale(1.08);
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   FEEDBACK RATING STARS
+   ══════════════════════════════════════════════════════════ */
+
+.feedback-rating {
+  transition: letter-spacing 0.25s ease;
+}
+
+.feedback-card:hover .feedback-rating {
+  letter-spacing: 0.14em;
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   FOCUS / ACCESSIBILITY
+   ══════════════════════════════════════════════════════════ */
 
 .menu-toggle:focus-visible,
 .theme-toggle:focus-visible,
@@ -53,5 +490,22 @@
 .nav-link:focus-visible,
 a:focus-visible {
   outline: 2px solid var(--accent-strong);
-  outline-offset: 2px;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   REDUCE MOTION  — respect user preference
+   ══════════════════════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration:        0.01ms !important;
+    animation-iteration-count: 1      !important;
+    transition-duration:       0.01ms !important;
+    scroll-behavior:           auto   !important;
+  }
 }

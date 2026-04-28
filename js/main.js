@@ -18,8 +18,31 @@
     menuToggle.setAttribute("aria-expanded", String(Boolean(isOpen)));
   });
 
+  const headerHeight = document.querySelector('.site-header')?.offsetHeight || 80;
+
   navLinks.forEach((link) => {
-    link.addEventListener("click", closeMenu);
+    link.addEventListener("click", (e) => {
+      const targetId = link.getAttribute("href");
+      
+      // Only apply to internal anchor links
+      if (targetId && targetId.startsWith("#")) {
+        e.preventDefault();
+        closeMenu();
+        
+        const targetSection = document.querySelector(targetId);
+        if (targetSection) {
+          // Calculate position minus header height and some padding
+          const offsetTop = targetSection.getBoundingClientRect().top + window.scrollY - headerHeight - 20;
+          
+          window.scrollTo({
+            top: offsetTop,
+            behavior: "smooth"
+          });
+        }
+      } else {
+        closeMenu();
+      }
+    });
   });
 
   const setActiveNav = () => {
