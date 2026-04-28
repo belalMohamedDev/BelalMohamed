@@ -19,6 +19,7 @@
   --container: min(1120px, 92vw);
   --header-height: 78px;
 }
+ 
 
 html[data-theme="dark"] {
   --bg: #171b22;
