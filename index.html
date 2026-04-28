@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Belal Mohamed - Flutter Developer portfolio focused on high-performance mobile experiences.">
+  <title>Belal Mohamed | Flutter Developer</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <canvas id="particles-canvas" aria-hidden="true"></canvas>
+  <div class="cursor-glow" aria-hidden="true"></div>
+
+  <header class="site-header" id="top">
+    <div class="container nav-container">
+      <a class="brand" href="#home" aria-label="Belal Mohamed home">
+        <span class="brand-mark">BM</span>
+        <span class="brand-text">Belal Mohamed</span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="siteNav">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" id="siteNav" aria-label="Primary">
+        <a href="#home" class="nav-link is-active">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <span class="theme-icon">◐</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="section hero">
+      <div class="container hero-grid">
+        <article class="hero-content reveal">
+          <p class="eyebrow">Flutter Developer</p>
+          <h1>Designing mobile products people love to use.</h1>
+          <p class="typing-line">
+            I build as a <span id="typedText"></span><span class="typing-caret" aria-hidden="true"></span>
+          </p>
+          <p class="hero-intro">
+            I am Belal Mohamed, a Flutter engineer focused on polished user experiences, scalable architecture, and measurable app performance gains.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projects">View Projects</a>
+            <a class="btn btn-secondary" href="assets/Belal_Mohamed_CV.pdf" download>Download CV</a>
+          </div>
+        </article>
+
+        <aside class="hero-panel reveal">
+          <img src="assets/profile.png" alt="Portrait of Belal Mohamed" loading="lazy" width="520" height="520">
+          <ul class="hero-metrics">
+            <li><strong>4+</strong><span>Years experience</span></li>
+            <li><strong>4</strong><span>Production apps</span></li>
+            <li><strong>25-35%</strong><span>API latency reduced</span></li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container">
+        <header class="section-head section-head-center reveal">
+          <h2>About Me</h2>
+        </header>
+        <div class="about-layout">
+          <article class="about-media-card reveal">
+            <div class="about-photo-wrap">
+              <img src="assets/profile.png" alt="Belal Mohamed profile photo" loading="lazy" width="520" height="520">
+            </div>
+          </article>
+          <article class="about-content-card reveal">
+            <p>
+              Hi! I am <strong>Belal Mohamed</strong>, a <strong>Flutter Developer</strong> who loves turning ideas into smooth, beautiful mobile apps. I specialize in crafting high-performance, user-friendly experiences for Android and iOS.
+            </p>
+            <p>
+              When I am not coding, you will find me exploring modern UI/UX patterns, mentoring junior developers, and experimenting with practical architecture choices that scale.
+            </p>
+            <p>
+              I thrive on creativity, clean architecture, and building solutions that create clear product impact.
+            </p>
+            <ul class="about-tags" aria-label="Core strengths">
+              <li>Communication</li>
+              <li>Problem-solving</li>
+              <li>Teamwork</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="section">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">Experience</p>
+          <h2>Hands-on product delivery across live mobile apps.</h2>
+        </header>
+        <div class="timeline">
+          <article class="timeline-item reveal">
+            <span class="timeline-icon" aria-hidden="true"><iconify-icon icon="mdi:briefcase"></iconify-icon></span>
+            <h3>Flutter Developer (Part-time) | Go Tawfeer App</h3>
+            <p class="timeline-meta">Oct 2025 - Present | Remote, Saudi Arabia</p>
+            <ul class="timeline-points">
+              <li>Serve as a core team member on the GoTawfeer e-commerce platform, collaborating with backend engineers in a professional remote environment.</li>
+              <li>Led development of product browsing, cart management, and full checkout flow, improving UX across Android and iOS.</li>
+              <li>Designed and integrated scalable REST APIs with backend engineers, ensuring reliable data flow and error resilience.</li>
+              <li>Optimized app performance across multiple device types, reducing UI jank and improving responsiveness for production users.</li>
+              <li>Contributed to production deployment releases on both the App Store and Google Play.</li>
+            </ul>
+          </article>
+          <article class="timeline-item reveal">
+            <span class="timeline-icon" aria-hidden="true"><iconify-icon icon="mdi:briefcase-check"></iconify-icon></span>
+            <h3>Flutter Developer | Self-Employed (Freelance)</h3>
+            <p class="timeline-meta">Jan 2022 - Present | Sharqia, Egypt | 3 production apps live on Google Play &amp; App Store</p>
+            <ul class="timeline-points">
+              <li>Architected, developed, and published 3 production-grade Flutter apps (Foorira, GoTawfeer, Sweetna), managing the full lifecycle from UI/UX to Node.js backend integration.</li>
+              <li>Reduced API response latency by <strong>25-35%</strong> in Foorira through optimized Dio networking, request caching, and token refresh interceptors.</li>
+              <li>Decreased checkout time by around <strong>30%</strong> in GoTawfeer by streamlining Bloc state management and parallel API call execution.</li>
+              <li>Implemented real-time order tracking using Firebase Cloud Messaging (FCM) and Google Maps SDK, delivering live driver-to-customer location updates.</li>
+              <li>Integrated the Firebase suite (Auth, Firestore, FCM, Storage, Crashlytics) for authentication, persistence, notifications, and crash reporting.</li>
+              <li>Applied Clean Architecture and Repository Pattern to maintain a testable, scalable, and maintainable codebase across projects.</li>
+            </ul>
+          </article>
+          <article class="timeline-item reveal">
+            <span class="timeline-icon" aria-hidden="true"><iconify-icon icon="mdi:school-outline"></iconify-icon></span>
+            <h3>Flutter Developer Intern | Technique Company</h3>
+            <p class="timeline-meta">Jul 2021 - Dec 2021 | Zagazig, Egypt</p>
+            <ul class="timeline-points">
+              <li>Delivered end-to-end mobile features within an Agile team, integrating Firebase Authentication, Firestore, and Cloud Messaging.</li>
+              <li>Implemented Bloc architecture, reducing code complexity by around <strong>30%</strong> and improving maintainability.</li>
+              <li>Built responsive, pixel-perfect user interfaces and profiled performance bottlenecks using Flutter DevTools.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="education" class="section">
+      <div class="container">
+        <header class="section-head section-head-center reveal">
+          <p class="eyebrow">Education</p>
+          <h2>Academic and professional learning journey.</h2>
+        </header>
+        <div class="education-grid">
+          <article class="education-card reveal">
+            <div class="education-icon" aria-hidden="true">
+              <iconify-icon icon="mdi:school-outline"></iconify-icon>
+            </div>
+            <h3>Flutter Development Track | National Telecommunication Institute (NTI)</h3>
+            <p class="education-meta">Jan 2026 - Present | Zagazig, Egypt</p>
+            <p>
+              Advanced Flutter training focused on Bloc, Clean Architecture, API Integration, and production-level development practices.
+            </p>
+            <ul class="education-tags">
+              <li>Flutter</li>
+              <li>Bloc</li>
+              <li>Clean Architecture</li>
+              <li>API Integration</li>
+            </ul>
+          </article>
+
+          <article class="education-card reveal">
+            <div class="education-icon" aria-hidden="true">
+              <iconify-icon icon="mdi:school"></iconify-icon>
+            </div>
+            <h3>Bachelor of Computer Science | Higher Technological Institute</h3>
+            <p class="education-meta">Jan 2018 - Jan 2022 | 10th of Ramadan City, Egypt</p>
+            <p>
+              Focused on software development fundamentals, problem solving, and mobile technologies across practical academic projects.
+            </p>
+            <ul class="education-tags">
+              <li>Software Development</li>
+              <li>Mobile Technologies</li>
+              <li>Computer Science</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">Skills</p>
+          <h2>Technical stack I use to build production apps.</h2>
+        </header>
+        <div class="skills-groups">
+          <article class="skill-group reveal">
+            <h3>Core Skills</h3>
+            <ul class="skill-tags">
+              <li><span class="skill-icon"><iconify-icon icon="mdi:layers-triple-outline"></iconify-icon></span><span>Clean Architecture</span></li>
+              <li><span class="skill-icon"><iconify-icon icon="mdi:source-repository"></iconify-icon></span><span>Repository Pattern</span></li>
+              <li><span class="skill-icon"><iconify-icon icon="mdi:lightbulb-on-outline"></iconify-icon></span><span>Problem Solving</span></li>
+              <li><span class="skill-icon"><iconify-icon icon="mdi:speedometer"></iconify-icon></span><span>Performance Optimization</span></li>
+              <li><span class="skill-icon"><iconify-icon icon="mdi:bug-check-outline"></iconify-icon></span><span>Debugging &amp; Error Handling</span></li>
+            </ul>
+          </article>
+          <article class="skill-group reveal">
+            <h3>Mobile Development</h3>
+            <ul class="skill-tags">
+              <li><span class="skill-icon"><iconify-icon icon="logos:flutter"></iconify-icon></span><span>Flutter</span></li>
+              <li><span class="skill-icon"><iconify-icon icon="logos:dart"></iconify-icon></span><span>Dart (Null Safety, Async/Await)</span></li>
+              <li><span class="skill-icon"><iconify-icon icon="mdi:cellphone-link"></iconify-icon></span><span>Cross-Platform Development (iOS &amp; Android)</span></li>
+              <li><span class="skill-icon"><iconify-icon icon="mdi:responsive"></iconify-icon></span><span>Responsive &amp; Adaptive UI</span></li>
+              <li><span class="skill-icon"><iconify-icon icon="mdi:view-grid-plus-outline"></iconify-icon></span><span>Custom Widgets</span></li>
+            </ul>
+          </article>
+          <article class="skill-group reveal">
+            <h3>State Management</h3>
+            <ul class="skill-tags">
+              <li><span class="skill-icon"><iconify-icon icon="mdi:vector-polyline"></iconify-icon></span><span>Bloc</span></li>
+              <li><span class="skill-icon"><iconify-icon icon="mdi:cube-outline"></iconify-icon></span><span>Cubit</span></li>
+            </ul>
+          </article>
+          <article class="skill-group reveal">
+            <h3>Backend &amp; Integration</h3>
+            <ul class="skill-tags">
+              <li><span class="skill-icon"><iconify-icon icon="logos:nodejs-icon"></iconify-icon></span><span>Node.js</span></li>
+              <li><span class="skill-icon"><iconify-icon icon="mdi:api"></iconify-icon></span><span>REST API Integration</span></li>
+              <li><span class="skill-icon"><iconify-icon icon="mdi:code-json"></iconify-icon></span><span>JSON Parsing</span></li>
+            </ul>
+          </article>
+          <article class="skill-group reveal">
+            <h3>Networking</h3>
+            <ul class="skill-tags">
+              <li><span class="skill-icon"><iconify-icon icon="mdi:access-point-network"></iconify-icon></span><span>Dio (Token Refresh &amp; Retry)</span></li>
+              <li><span class="skill-icon"><iconify-icon icon="mdi:sync-circle"></iconify-icon></span><span>Retrofit</span></li>
+            </ul>
+          </article>
+          <article class="skill-group reveal">
+            <h3>Firebase</h3>
+            <ul class="skill-tags">
+              <li><span class="skill-icon"><iconify-icon icon="logos:firebase-icon"></iconify-icon></span><span>Firebase Authentication</span></li>
+              <li><span class="skill-icon"><iconify-icon icon="mdi:database-outline"></iconify-icon></span><span>Firestore</span></li>
+              <li><span class="skill-icon"><iconify-icon icon="mdi:message-badge-outline"></iconify-icon></span><span>Cloud Messaging (FCM)</span></li>
+              <li><span class="skill-icon"><iconify-icon icon="mdi:folder-upload-outline"></iconify-icon></span><span>Firebase Storage</span></li>
+              <li><span class="skill-icon"><iconify-icon icon="mdi:car-brake-alert"></iconify-icon></span><span>Crashlytics</span></li>
+            </ul>
+          </article>
+          <article class="skill-group reveal">
+            <h3>Maps &amp; Real-Time</h3>
+            <ul class="skill-tags">
+              <li><span class="skill-icon"><iconify-icon icon="logos:google-maps"></iconify-icon></span><span>Google Maps SDK</span></li>
+              <li><span class="skill-icon"><iconify-icon icon="mdi:crosshairs-gps"></iconify-icon></span><span>GPS Services</span></li>
+              <li><span class="skill-icon"><iconify-icon icon="mdi:map-marker-path"></iconify-icon></span><span>Real-Time Tracking</span></li>
+              <li><span class="skill-icon"><iconify-icon icon="mdi:bell-ring-outline"></iconify-icon></span><span>Push Notifications</span></li>
+            </ul>
+          </article>
+          <article class="skill-group reveal">
+            <h3>Local Storage</h3>
+            <ul class="skill-tags">
+              <li><span class="skill-icon"><iconify-icon icon="mdi:archive-outline"></iconify-icon></span><span>Hive</span></li>
+              <li><span class="skill-icon"><iconify-icon icon="mdi:tune-variant"></iconify-icon></span><span>Shared Preferences</span></li>
+              <li><span class="skill-icon"><iconify-icon icon="mdi:shield-lock-outline"></iconify-icon></span><span>Flutter Secure Storage</span></li>
+            </ul>
+          </article>
+          <article class="skill-group reveal">
+            <h3>UI/UX &amp; Animations</h3>
+            <ul class="skill-tags">
+              <li><span class="skill-icon"><iconify-icon icon="mdi:animation-play-outline"></iconify-icon></span><span>Lottie Animations</span></li>
+              <li><span class="skill-icon"><iconify-icon icon="mdi:rocket-launch-outline"></iconify-icon></span><span>Hero Animations</span></li>
+              <li><span class="skill-icon"><iconify-icon icon="mdi:palette-outline"></iconify-icon></span><span>Smooth UX Design</span></li>
+              <li><span class="skill-icon"><iconify-icon icon="mdi:gesture-tap-button"></iconify-icon></span><span>Micro-interactions</span></li>
+            </ul>
+          </article>
+          <article class="skill-group reveal">
+            <h3>Tools &amp; Practices</h3>
+            <ul class="skill-tags">
+              <li><span class="skill-icon"><iconify-icon icon="logos:git-icon"></iconify-icon></span><span>Git</span></li>
+              <li><span class="skill-icon"><iconify-icon icon="mdi:tools"></iconify-icon></span><span>Flutter DevTools</span></li>
+              <li><span class="skill-icon"><iconify-icon icon="mdi:bug-outline"></iconify-icon></span><span>Debugging Tools</span></li>
+              <li><span class="skill-icon"><iconify-icon icon="mdi:tune"></iconify-icon></span><span>Code Optimization Techniques</span></li>
+            </ul>
+          </article>
+          <article class="skill-group reveal">
+            <h3>Deployment</h3>
+            <ul class="skill-tags">
+              <li><span class="skill-icon"><iconify-icon icon="logos:google-play-icon"></iconify-icon></span><span>Google Play Store</span></li>
+              <li><span class="skill-icon"><iconify-icon icon="logos:apple-app-store"></iconify-icon></span><span>Apple App Store</span></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="section">
+      <div class="container">
+        <header class="section-head section-head-center reveal">
+          <p class="eyebrow">Services</p>
+          <h2>How I can help your product.</h2>
+        </header>
+        <div class="services-grid">
+          <article class="card service-card reveal">
+            <div class="service-icon" aria-hidden="true"><iconify-icon icon="logos:flutter"></iconify-icon></div>
+            <h3>Flutter App Development</h3>
+            <p>End-to-end Flutter apps for Android and iOS with scalable architecture and production-ready quality.</p>
+            <ul class="service-list">
+              <li>Cross-platform apps</li>
+              <li>Clean Architecture + Bloc/Cubit</li>
+              <li>App Store / Play Store release</li>
+            </ul>
+          </article>
+
+          <article class="card service-card reveal">
+            <div class="service-icon" aria-hidden="true"><iconify-icon icon="logos:nodejs-icon"></iconify-icon></div>
+            <h3>Node.js Backend Integration</h3>
+            <p>Robust backend integration and API workflows tailored for mobile products and real user traffic.</p>
+            <ul class="service-list">
+              <li>REST API design/integration</li>
+              <li>Authentication flows</li>
+              <li>Error handling and resilience</li>
+            </ul>
+          </article>
+
+          <article class="card service-card reveal">
+            <div class="service-icon service-icon-firebase" aria-hidden="true"><iconify-icon icon="logos:firebase-icon"></iconify-icon></div>
+            <h3>Firebase Solutions</h3>
+            <p>Complete Firebase setup for authentication, real-time updates, notifications, storage, and monitoring.</p>
+            <ul class="service-list">
+              <li>Auth + Firestore + Storage</li>
+              <li>FCM push notifications</li>
+              <li>Crashlytics analytics</li>
+            </ul>
+          </article>
+
+          <article class="card service-card reveal">
+            <div class="service-icon" aria-hidden="true"><iconify-icon icon="mdi:speedometer"></iconify-icon></div>
+            <h3>Performance Optimization</h3>
+            <p>Improve startup time, reduce UI jank, and optimize data/network layers for a faster app experience.</p>
+            <ul class="service-list">
+              <li>Dio optimization + caching</li>
+              <li>Smooth frame performance</li>
+              <li>Production profiling</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">Projects</p>
+          <h2>Real products shipped with measurable impact.</h2>
+        </header>
+        <div class="projects-grid">
+          <article class="project-card reveal">
+            <div class="project-cover project-cover-foorira">
+              <img src="assets/foorira.png" alt="Foorira app screenshot" loading="lazy" width="520" height="300">
+            </div>
+            <h3>Foorira</h3>
+            <p class="project-type">Multi-Vendor Delivery App - iOS &amp; Android (Live)</p>
+            <ul class="project-tags">
+              <li>Flutter</li>
+              <li>Dio</li>
+              <li>Node.js</li>
+              <li>GPS</li>
+            </ul>
+            <p>
+              Multi-role delivery system (customer, driver, vendor) with live order tracking and real-time GPS driver location.
+            </p>
+            <p>
+              Reduced API latency by <strong>25-35%</strong> using optimized Dio networking, caching, retry logic, and token refresh.
+            </p>
+            <div class="project-links">
+              <a href="https://apps.apple.com/us/app/foorira" target="_blank" rel="noopener">App Store <iconify-icon icon="mdi:open-in-new"></iconify-icon></a>
+              <a href="https://play.google.com/store/apps/details?id=com.foorira.newusersapp" target="_blank" rel="noopener">Play Store <iconify-icon icon="mdi:open-in-new"></iconify-icon></a>
+            </div>
+          </article>
+          <article class="project-card reveal">
+            <div class="project-cover project-cover-gotawfeer">
+              <img src="assets/project-gotawfeer.png" alt="GoTawfeer app screenshot" loading="lazy" width="520" height="300">
+            </div>
+            <h3>GoTawfeer</h3>
+            <p class="project-type">E-Commerce Application - iOS &amp; Android (Live)</p>
+            <ul class="project-tags">
+              <li>Flutter</li>
+              <li>Bloc</li>
+              <li>Clean Architecture</li>
+              <li>Dio</li>
+            </ul>
+            <p>
+              Full-scale commerce flow: authentication, catalog, cart, checkout, and order history with resilient API integration.
+            </p>
+            <p>
+              Improved checkout flow and reduced completion time by around <strong>30%</strong> through optimized state transitions.
+            </p>
+            <div class="project-links">
+              <a href="https://apps.apple.com/us/app/go-tawfeer" target="_blank" rel="noopener">App Store <iconify-icon icon="mdi:open-in-new"></iconify-icon></a>
+              <a href="https://play.google.com/store/apps/details?id=belal.agwa.gotawfeer" target="_blank" rel="noopener">Play Store <iconify-icon icon="mdi:open-in-new"></iconify-icon></a>
+            </div>
+          </article>
+          <article class="project-card reveal">
+            <div class="project-cover project-cover-sweetna">
+              <img src="assets/project-sweetna.png" alt="Sweetna app screenshot" loading="lazy" width="520" height="300">
+            </div>
+            <h3>Sweetna</h3>
+            <p class="project-type">Dessert Ordering App - Android (Live)</p>
+            <ul class="project-tags">
+              <li>Flutter</li>
+              <li>Cubit</li>
+              <li>Clean Architecture</li>
+              <li>Multi-language</li>
+            </ul>
+            <p>
+              Built a complete dessert ordering experience with cart, checkout, and order management in Arabic and English.
+            </p>
+            <p>
+              Used Cubit + Clean Architecture for scalable code and smooth UX across key purchase journeys.
+            </p>
+            <div class="project-links">
+              <a href="https://play.google.com/store/apps/details?id=com.sweetna.app" target="_blank" rel="noopener">Play Store <iconify-icon icon="mdi:open-in-new"></iconify-icon></a>
+            </div>
+          </article>
+          <article class="project-card reveal">
+            <div class="project-cover project-cover-finder">
+              <img src="assets/project-finder.png" alt="Finder app screenshot" loading="lazy" width="520" height="300">
+            </div>
+            <h3>Finder</h3>
+            <p class="project-type">AI-Powered Face Recognition App - Graduation Project</p>
+            <ul class="project-tags">
+              <li>Flutter</li>
+              <li>Node.js</li>
+              <li>Flask</li>
+              <li>Face Recognition</li>
+            </ul>
+            <p>
+              Led the development of an AI-based system to identify missing children using face recognition and real-time GPS tracking.
+            </p>
+            <p>
+              Built backend services for image processing pipelines, face matching, secure storage, and push notifications.
+            </p>
+            <div class="project-links">
+              <a href="https://github.com/belalMohamedDev/finder" target="_blank" rel="noopener">GitHub <iconify-icon icon="mdi:open-in-new"></iconify-icon></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="feedback" class="section">
+      <div class="container">
+        <header class="section-head section-head-center reveal">
+          <p class="eyebrow">Feedback</p>
+          <h2>What clients say about working with me.</h2>
+        </header>
+        <div class="feedback-grid">
+          <article class="feedback-card reveal">
+            <div class="feedback-rating" aria-label="5 out of 5 stars">★★★★★</div>
+            <p>
+              Belal delivered the GoTawfeer app modules with excellent quality and speed. Checkout experience became smoother, and our team trusted his architecture decisions from day one.
+            </p>
+            <h3>Product Manager - GoTawfeer</h3>
+            <span>E-Commerce Team, Saudi Arabia</span>
+          </article>
+
+          <article class="feedback-card reveal">
+            <div class="feedback-rating" aria-label="5 out of 5 stars">★★★★★</div>
+            <p>
+              Strong ownership and clear communication. He optimized API handling and app responsiveness across different devices, which made a clear impact on user experience.
+            </p>
+            <h3>Technical Lead - Foorira</h3>
+            <span>Delivery Platform Team</span>
+          </article>
+
+          <article class="feedback-card reveal">
+            <div class="feedback-rating" aria-label="5 out of 5 stars">★★★★★</div>
+            <p>
+              From UI details to production release, Belal handled the project professionally. The codebase was clean, scalable, and easy for our team to maintain.
+            </p>
+            <h3>Founder - Sweetna App</h3>
+            <span>Food &amp; Dessert Startup</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">Contact</p>
+          <h2>Let us build something exceptional.</h2>
+        </header>
+        <div class="contact-grid">
+          <article class="card reveal">
+            <h3>Reach Out</h3>
+            <ul class="contact-list">
+              <li><span>Email</span><a href="mailto:belal.dev@example.com">belal.dev@example.com</a></li>
+              <li><span>WhatsApp</span><a href="https://wa.me/201000000000" target="_blank" rel="noopener">+20 100 000 0000</a></li>
+              <li><span>LinkedIn</span><a href="#" target="_blank" rel="noopener">linkedin.com/in/belal-mohamed</a></li>
+              <li><span>GitHub</span><a href="#" target="_blank" rel="noopener">github.com/belal-mohamed</a></li>
+            </ul>
+          </article>
+          <article class="card reveal">
+            <h3>Quick Intro</h3>
+            <p>Share your app idea or current bottleneck and I will suggest a practical implementation path.</p>
+            <a class="btn btn-primary" href="mailto:belal.dev@example.com">Start Conversation</a>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <p>&copy; <span id="currentYear"></span> Belal Mohamed. Crafted with care.</p>
+      <a href="#top" class="back-top">Back to top</a>
+    </div>
+  </footer>
+
+  <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js" defer></script>
+  <script src="js/theme.js" defer></script>
+  <script src="js/typing.js" defer></script>
+  <script src="js/animations.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>

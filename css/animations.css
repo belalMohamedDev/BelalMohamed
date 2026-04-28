@@ -1,0 +1,57 @@
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes floatIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: transform 0.6s cubic-bezier(0.2, 0.6, 0.2, 1), opacity 0.6s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.btn:hover,
+.btn:focus-visible {
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.16);
+}
+
+.project-card:hover,
+.project-card:focus-within {
+  transform: translateY(-5px);
+  border-color: color-mix(in srgb, var(--accent) 60%, var(--border));
+}
+
+.skill-card {
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--accent) 50%, var(--border));
+}
+
+.menu-toggle:focus-visible,
+.theme-toggle:focus-visible,
+.btn:focus-visible,
+.nav-link:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--accent-strong);
+  outline-offset: 2px;
+}

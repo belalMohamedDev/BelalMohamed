@@ -1,0 +1,113 @@
+@media (max-width: 1080px) {
+
+
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 920px) {
+  .hero-grid,
+  .about-grid,
+  .about-layout,
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    min-height: auto;
+    padding-block: calc(1.25rem + 64px + 1rem) 1rem;
+  }
+
+  .services-grid,
+  .feedback-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  :root {
+    --header-height: 72px;
+  }
+
+  .nav-container {
+    padding: 0 0.5rem 0 0.8rem;
+    gap: 0.5rem;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .site-nav {
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+    left: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.2rem;
+    padding: 0.65rem;
+    border: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
+    border-radius: var(--radius-md);
+    background: color-mix(in srgb, var(--surface) 90%, transparent);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    box-shadow: 0 10px 40px -10px color-mix(in srgb, var(--text) 15%, transparent);
+    transform: translateY(-10px);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
+  }
+
+  .site-nav.is-open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-link {
+    padding: 0.6rem 0.75rem;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .nav-link.is-active {
+    background: color-mix(in srgb, var(--text) 4%, transparent) !important;
+  }
+
+  .theme-toggle {
+    margin-left: auto;
+    margin-right: 0;
+  }
+
+  h1 {
+    max-width: 18ch;
+  }
+
+  .section {
+    padding: 74px 0;
+  }
+
+  .hero-metrics {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-panel img {
+    max-height: 420px;
+  }
+
+  .about-photo-wrap img {
+    width: min(320px, 100%);
+    max-height: 520px;
+  }
+
+  .footer-wrap {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
