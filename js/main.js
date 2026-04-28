@@ -20,24 +20,46 @@
 
   const headerHeight = document.querySelector('.site-header')?.offsetHeight || 80;
 
+  // Custom smooth scroll function
+  const smoothScrollTo = (targetPosition, duration = 800) => {
+    const startPosition = window.scrollY;
+    const distance = targetPosition - startPosition;
+    let startTime = null;
+
+    const easeInOutCubic = (t, b, c, d) => {
+      t /= d / 2;
+      if (t < 1) return c / 2 * t * t * t + b;
+      t -= 2;
+      return c / 2 * (t * t * t + 2) + b;
+    };
+
+    const animation = (currentTime) => {
+      if (startTime === null) startTime = currentTime;
+      const timeElapsed = currentTime - startTime;
+      const run = easeInOutCubic(timeElapsed, startPosition, distance, duration);
+      window.scrollTo(0, run);
+      if (timeElapsed < duration) {
+        requestAnimationFrame(animation);
+      } else {
+        window.scrollTo(0, targetPosition);
+      }
+    };
+
+    requestAnimationFrame(animation);
+  };
+
   navLinks.forEach((link) => {
     link.addEventListener("click", (e) => {
       const targetId = link.getAttribute("href");
       
-      // Only apply to internal anchor links
       if (targetId && targetId.startsWith("#")) {
         e.preventDefault();
         closeMenu();
         
         const targetSection = document.querySelector(targetId);
         if (targetSection) {
-          // Calculate position minus header height and some padding
           const offsetTop = targetSection.getBoundingClientRect().top + window.scrollY - headerHeight - 20;
-          
-          window.scrollTo({
-            top: offsetTop,
-            behavior: "smooth"
-          });
+          smoothScrollTo(offsetTop, 800); // 800ms duration
         }
       } else {
         closeMenu();
