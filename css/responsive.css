@@ -7,6 +7,7 @@
 }
 
 @media (max-width: 920px) {
+
   .hero-grid,
   .about-grid,
   .about-layout,
@@ -89,8 +90,36 @@
     padding: 74px 0;
   }
 
+  .hero {
+    padding-top: 130px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+  }
+
   .hero-metrics {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.5rem;
+  }
+
+  .hero-social-card span {
+    display: none;
+  }
+
+  .hero-metrics li {
+    min-height: 60px;
+  }
+
+  .hero-social-card iconify-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0;
   }
 
   .projects-grid {
