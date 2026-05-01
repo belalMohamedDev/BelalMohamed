@@ -21,110 +21,129 @@
     ".contact-grid",
   ];
 
-  /* ── 1. Auto-stagger grid/list children ─────────────────── */
-  STAGGER_PARENTS.forEach(function (selector) {
-    var parent = document.querySelector(selector);
-    if (!parent) return;
-
-    Array.from(parent.children).forEach(function (child, index) {
-      /* Add .reveal if child has no reveal variant already */
-      var hasReveal = child.classList.contains("reveal")       ||
-                      child.classList.contains("reveal-left")  ||
-                      child.classList.contains("reveal-right") ||
-                      child.classList.contains("reveal-scale");
-      if (!hasReveal) {
-        child.classList.add("reveal");
-      }
-      child.classList.add("stagger-" + Math.min(index + 1, 11));
-    });
-  });
-
   /* ── 2. Collect every reveal element ────────────────────── */
   var SELECTOR = ".reveal, .reveal-left, .reveal-right, .reveal-scale";
 
-  /* ── 3. IntersectionObserver ─────────────────────────────── */
-  var revealObserver = new IntersectionObserver(
-    function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add("is-visible");
-        revealObserver.unobserve(entry.target);   /* fire once only   */
-      });
-    },
-    {
-      rootMargin: "0px 0px " + REVEAL_OFFSET + " 0px",
-      threshold:  REVEAL_THRESHOLD,
-    }
-  );
+  /* ── 3. Initialize Animations safely ─────────────────────── */
+  function initAnimations() {
+    /* Auto-stagger grid/list children */
+    STAGGER_PARENTS.forEach(function (selector) {
+      var parent = document.querySelector(selector);
+      if (!parent) return;
 
-  /* Observe all reveal elements */
-  document.querySelectorAll(SELECTOR).forEach(function (el) {
-    revealObserver.observe(el);
-  });
-
-  /* ── 4. Section-head underline observer ──────────────────── */
-  var headObserver = new IntersectionObserver(
-    function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add("is-visible");
-        headObserver.unobserve(entry.target);
-      });
-    },
-    { rootMargin: "0px 0px -40px 0px", threshold: 0.4 }
-  );
-
-  document.querySelectorAll(".section-head").forEach(function (el) {
-    headObserver.observe(el);
-  });
-
-  /* ── 5. Hero elements: reveal immediately on load ────────── */
-  /* Hero content is visible from page open — no scroll needed */
-  document.querySelectorAll(
-    ".hero .reveal, .hero .reveal-left, .hero .reveal-right"
-  ).forEach(function (el) {
-    el.classList.add("is-visible");
-  });
-
-  /* ── 6. Counter animation for hero metrics ───────────────── */
-  var countersRun = false;
-
-  var counterObserver = new IntersectionObserver(
-    function (entries) {
-      if (countersRun) return;
-      var visible = entries.some(function (e) { return e.isIntersecting; });
-      if (!visible) return;
-
-      countersRun = true;
-      counterObserver.disconnect();
-
-      document.querySelectorAll(".hero-metrics strong").forEach(function (el) {
-        var raw     = el.textContent.trim();           /* e.g. "4+", "25-35%" */
-        var numStr  = raw.match(/[\d.]+/);
-        if (!numStr) return;
-        var target  = parseFloat(numStr[0]);
-        var suffix  = raw.replace(/^[\d.]+/, "");
-        var start   = null;
-        var dur     = 1000;
-
-        function tick(ts) {
-          if (!start) start = ts;
-          var p   = Math.min((ts - start) / dur, 1);
-          var val = Number.isInteger(target)
-            ? Math.round(p * target)
-            : (Math.round(p * target * 10) / 10);
-          el.textContent = val + suffix;
-          if (p < 1) requestAnimationFrame(tick);
+      Array.from(parent.children).forEach(function (child, index) {
+        /* Add .reveal if child has no reveal variant already */
+        var hasReveal = child.classList.contains("reveal")       ||
+                        child.classList.contains("reveal-left")  ||
+                        child.classList.contains("reveal-right") ||
+                        child.classList.contains("reveal-scale");
+        if (!hasReveal) {
+          child.classList.add("reveal");
         }
-        requestAnimationFrame(tick);
+        child.classList.add("stagger-" + Math.min(index + 1, 11));
       });
-    },
-    { threshold: 0.8 }
-  );
+    });
+    /* IntersectionObserver for Scroll Reveal */
+    var revealObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          revealObserver.unobserve(entry.target);   /* fire once only   */
+        });
+      },
+      {
+        rootMargin: "0px 0px " + REVEAL_OFFSET + " 0px",
+        threshold:  REVEAL_THRESHOLD,
+      }
+    );
 
-  document.querySelectorAll(".hero-metrics li").forEach(function (li) {
-    counterObserver.observe(li);
-  });
+    /* Observe all reveal elements */
+    document.querySelectorAll(SELECTOR).forEach(function (el) {
+      revealObserver.observe(el);
+      
+      /* Fallback: if element is already high up in the viewport on load */
+      var rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 50) {
+        el.classList.add("is-visible");
+        revealObserver.unobserve(el);
+      }
+    });
+
+    /* Section-head underline observer */
+    var headObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          headObserver.unobserve(entry.target);
+        });
+      },
+      { rootMargin: "0px 0px -40px 0px", threshold: 0.4 }
+    );
+
+    document.querySelectorAll(".section-head").forEach(function (el) {
+      headObserver.observe(el);
+      var rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 40) {
+        el.classList.add("is-visible");
+        headObserver.unobserve(el);
+      }
+    });
+
+    /* Hero elements: reveal immediately on load */
+    document.querySelectorAll(
+      ".hero .reveal, .hero .reveal-left, .hero .reveal-right"
+    ).forEach(function (el) {
+      el.classList.add("is-visible");
+    });
+
+    /* Counter animation for hero metrics */
+    var countersRun = false;
+    var counterObserver = new IntersectionObserver(
+      function (entries) {
+        if (countersRun) return;
+        var visible = entries.some(function (e) { return e.isIntersecting; });
+        if (!visible) return;
+
+        countersRun = true;
+        counterObserver.disconnect();
+
+        document.querySelectorAll(".hero-metrics strong").forEach(function (el) {
+          var raw     = el.textContent.trim();           
+          var numStr  = raw.match(/[\d.]+/);
+          if (!numStr) return;
+          var target  = parseFloat(numStr[0]);
+          var suffix  = raw.replace(/^[\d.]+/, "");
+          var start   = null;
+          var dur     = 1000;
+
+          function tick(ts) {
+            if (!start) start = ts;
+            var p   = Math.min((ts - start) / dur, 1);
+            var val = Number.isInteger(target)
+              ? Math.round(p * target)
+              : (Math.round(p * target * 10) / 10);
+            el.textContent = val + suffix;
+            if (p < 1) requestAnimationFrame(tick);
+          }
+          requestAnimationFrame(tick);
+        });
+      },
+      { threshold: 0.8 }
+    );
+
+    document.querySelectorAll(".hero-metrics li").forEach(function (li) {
+      counterObserver.observe(li);
+    });
+  }
+
+  /* Run initialization when DOM is fully ready */
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initAnimations);
+  } else {
+    initAnimations();
+  }
 
   /* ── 7. Header: add .scrolled class for subtle shadow ────── */
   var siteHeader = document.querySelector(".site-header");
