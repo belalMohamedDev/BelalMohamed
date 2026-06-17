@@ -832,6 +832,37 @@ h3 {
   border-radius: 6px;
 }
 
+.project-cover-tawla {
+  background: linear-gradient(145deg, #1e293b, #0f172a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem;
+}
+
+.project-cover-tawla img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+}
+
+.project-cover-eduops {
+  background: linear-gradient(145deg, #1a3352, #0c1a2e);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+}
+
+.project-cover-eduops img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  border-radius: 6px;
+}
+
 .project-badge {
   display: inline-flex;
   align-items: center;
