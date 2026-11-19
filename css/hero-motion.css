@@ -1,0 +1,168 @@
+/* ══════════════════════════════════════════════════════════
+   HERO MOTION — load + idle animation for the opening screen
+   (pairs with js/hero-motion.js)
+   ══════════════════════════════════════════════════════════ */
+
+.stage {
+  --mx: 0;
+  --my: 0;
+}
+
+/* ── Name: letters rise in, then a light wave runs through ── */
+.stage-name {
+  translate: calc(var(--mx) * -22px) calc(var(--my) * -12px);
+  transition: translate 0.6s ease-out;
+}
+
+.stage-name-1 { --fill: color-mix(in srgb, var(--accent) 16%, transparent); }
+.stage-name-2 { --fill: transparent; }
+
+.stage-name .ch {
+  display: inline-block;
+  color: var(--fill);
+  -webkit-text-stroke-color: color-mix(in srgb, var(--accent) 55%, transparent);
+  opacity: 0;
+  transform: translateY(45%) rotateX(-70deg) scale(0.9);
+  transform-origin: 50% 100%;
+  animation:
+    letterIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) calc(0.15s + var(--i) * 0.07s) forwards,
+    letterGlow 7s ease-in-out calc(2s + var(--i) * 0.11s) infinite;
+}
+
+@keyframes letterIn {
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes letterGlow {
+  0%, 14%, 100% {
+    color: var(--fill);
+    -webkit-text-stroke-color: color-mix(in srgb, var(--accent) 55%, transparent);
+    text-shadow: none;
+  }
+  7% {
+    color: color-mix(in srgb, var(--accent) 38%, transparent);
+    -webkit-text-stroke-color: var(--color-2);
+    text-shadow: 0 0 28px color-mix(in srgb, var(--accent) 60%, transparent);
+  }
+}
+
+/* ── Pulse rings from behind the head ───────────────────── */
+.stage-pulse {
+  position: absolute;
+  left: 50%;
+  top: 38%;
+  width: min(46vh, 420px);
+  aspect-ratio: 1;
+  translate: calc(-50% + var(--mx) * 14px) calc(-50% + var(--my) * 10px);
+  transition: translate 0.6s ease-out;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.stage-pulse span {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1.5px solid color-mix(in srgb, var(--accent) 60%, transparent);
+  opacity: 0;
+  animation: heroPulse 4.5s cubic-bezier(0.2, 0.6, 0.3, 1) infinite;
+}
+
+.stage-pulse span:nth-child(2) { animation-delay: 1.5s; }
+.stage-pulse span:nth-child(3) { animation-delay: 3s; }
+
+@keyframes heroPulse {
+  0%   { opacity: 0;   transform: scale(0.55); }
+  15%  { opacity: 0.6; }
+  100% { opacity: 0;   transform: scale(1.6); }
+}
+
+/* ── Portrait: breathing + depth ────────────────────────── */
+.stage-portrait img {
+  transform-origin: 50% 100%;
+  translate: calc(var(--mx) * 10px) calc(var(--my) * 6px);
+  transition: translate 0.5s ease-out;
+  animation: portraitBreathe 5s ease-in-out 1.3s infinite;
+}
+
+@keyframes portraitBreathe {
+  0%, 100% { scale: 1; }
+  50%      { scale: 1.018; }
+}
+
+.stage-glow {
+  translate: calc(-50% + var(--mx) * 40px) calc(var(--my) * 24px);
+  transition: translate 0.8s ease-out;
+}
+
+.stage-rings {
+  translate: calc(-50% + var(--mx) * -16px) calc(-50% + var(--my) * -10px);
+  transition: translate 0.7s ease-out;
+}
+
+/* ── Intro text: words rise one by one ──────────────────── */
+.stage-intro .eyebrow {
+  opacity: 0;
+  animation: introFade 0.7s ease-out 0.5s forwards;
+}
+
+.stage-intro .wave {
+  display: inline-block;
+  transform-origin: 70% 80%;
+  animation: wave 2.4s ease-in-out 1.4s infinite;
+}
+
+.stage-intro h1 .w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+
+.stage-intro h1 .w > span {
+  display: inline-block;
+  transform: translateY(110%);
+  animation: wordUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) calc(0.7s + var(--i) * 0.08s) forwards;
+}
+
+.stage-intro h1 .w.accent > span {
+  background: linear-gradient(90deg, var(--accent-strong), var(--color-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@keyframes wordUp {
+  to { transform: none; }
+}
+
+@keyframes introFade {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes wave {
+  0%, 60%, 100% { transform: rotate(0deg); }
+  10%, 30%      { transform: rotate(16deg); }
+  20%, 40%      { transform: rotate(-8deg); }
+}
+
+/* ── Reduced motion: show everything, no loops ──────────── */
+@media (prefers-reduced-motion: reduce) {
+  .stage-name .ch,
+  .stage-intro .eyebrow,
+  .stage-intro h1 .w > span {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+  }
+
+  .stage-pulse,
+  .stage-intro .wave,
+  .stage-portrait img {
+    animation: none !important;
+  }
+
+  .stage-pulse { display: none; }
+}

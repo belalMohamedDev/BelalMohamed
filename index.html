@@ -4,13 +4,71 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Belal Mohamed | Product Engineer &amp; Founder of DIGITBOX</title>
   <meta name="description"
-    content="Belal Mohamed - Flutter Developer portfolio focused on high-performance mobile experiences.">
-  <title>Belal Mohamed | Flutter Developer</title>
+    content="Belal Mohamed is a Product Engineer and the founder of DIGITBOX, with a Flutter background, building fast, polished Android and iOS products with Bloc, Clean Architecture, Firebase and Node.js. See shipped projects and get in touch.">
+  <meta name="author" content="Belal Mohamed">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#fbf8f3" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#171b22" media="(prefers-color-scheme: dark)">
+
+  <!-- Social sharing (WhatsApp, LinkedIn, Facebook, X).
+       After deploying, change og:image to the full address, e.g. https://your-domain.com/assets/og-image.jpg,
+       and add <link rel="canonical"> + <meta property="og:url"> with your real URL. -->
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Belal Mohamed | Product Engineer">
+  <meta property="og:description"
+    content="Product Engineer with a Flutter background, building fast, polished Android & iOS products. See shipped projects like Foorira, GoTawfeer and Sweetna.">
+  <meta property="og:image" content="assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Belal Mohamed – Product Engineer">
+  <meta property="profile:first_name" content="Belal">
+  <meta property="profile:last_name" content="Mohamed">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Belal Mohamed | Product Engineer">
+  <meta name="twitter:description" content="Product Engineer building fast, polished Android & iOS products with Flutter.">
+  <meta name="twitter:image" content="assets/og-image.jpg">
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/profile.webp">
+
+  <!-- Load the hero photo and the icon service as early as possible -->
+  <link rel="preload" as="image" href="assets/profile-cutout.webp" type="image/webp" fetchpriority="high">
+  <link rel="preconnect" href="https://api.iconify.design" crossorigin>
+  <link rel="dns-prefetch" href="https://code.iconify.design">
+
+  <!-- Structured data: helps Google show a proper profile result -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Belal Mohamed",
+    "jobTitle": "Product Engineer",
+    "worksFor": [
+      { "@type": "Organization", "name": "DIGITBOX" },
+      { "@type": "Organization", "name": "مؤسسة الإيمان" }
+    ],
+    "description": "Product Engineer with a Flutter background, building Android and iOS products with Bloc, Clean Architecture, Firebase and Node.js.",
+    "knowsAbout": ["Flutter", "Dart", "Firebase", "Bloc", "Clean Architecture", "Node.js", "Android", "iOS"],
+    "alumniOf": [
+      { "@type": "EducationalOrganization", "name": "Higher Technological Institute" },
+      { "@type": "EducationalOrganization", "name": "National Telecommunication Institute (NTI)" }
+    ],
+    "sameAs": [
+      "https://github.com/belalMohamedDev",
+      "https://www.linkedin.com/in/belalmohameddev"
+    ]
+  }
+  </script>
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/stage.css">
+  <link rel="stylesheet" href="css/hero-motion.css">
+  <link rel="stylesheet" href="css/polish.css">
+  <link rel="stylesheet" href="css/sections.css">
 </head>
 
 <body>
@@ -44,71 +102,126 @@
   </header>
 
   <main>
-    <section id="home" class="section hero">
-      <div class="container hero-grid">
-        <article class="hero-content reveal-left">
-          <p class="eyebrow">Flutter Developer</p>
-          <h1>Designing mobile products people love to use.</h1>
-          <p class="typing-line">
-            I build as a <span id="typedText"></span><span class="typing-caret" aria-hidden="true"></span>
-          </p>
-          <p class="hero-intro">
-            I am Belal Mohamed, a Flutter engineer focused on polished user experiences, scalable architecture, and
-            measurable app performance gains.
-          </p>
+    <!-- ═══ SCROLL STAGE: cut-out portrait centred, info flies in around it ═══ -->
+    <section id="home" class="stage" aria-label="Introduction">
+      <div class="stage-sticky">
+        <!-- giant name behind the portrait -->
+        <div class="stage-name" aria-hidden="true">
+          <span class="stage-name-line stage-name-1">BELAL</span>
+          <span class="stage-name-line stage-name-2">MOHAMED</span>
+        </div>
+
+        <div class="stage-glow" aria-hidden="true"></div>
+        <div class="stage-pulse" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div class="stage-rings" aria-hidden="true"><span></span><span></span><span></span></div>
+
+        <!-- the cut-out portrait -->
+        <figure class="stage-portrait">
+          <img src="assets/profile-cutout.webp" alt="Belal Mohamed, Product Engineer" width="743" height="787" fetchpriority="high" decoding="async">
+        </figure>
+
+        <!-- Step 0: intro (visible on load, leaves on scroll) -->
+        <div class="stage-item stage-intro" data-in="-1" data-out="0.1" data-fx="0" data-fy="-40">
+          <p class="eyebrow">Hi, I'm Belal 👋</p>
+          <h1>I build mobile apps people love to use.</h1>
+        </div>
+
+        <!-- Step 1: who I am + experience -->
+        <div class="stage-item card card-role" data-in="0.1" data-out="0.38" data-fx="-120" data-fy="0">
+          <span class="card-label">Role</span>
+          <strong>Product Engineer</strong>
+          <p class="typing-line">I build as a <span id="typedText"></span><span class="typing-caret" aria-hidden="true"></span></p>
+        </div>
+        <div class="stage-item card card-exp card-exp-1" data-in="0.14" data-out="0.38" data-fx="140" data-fy="-30">
+          <span class="card-icon"><iconify-icon icon="mdi:rocket-launch-outline"></iconify-icon></span>
+          <div><strong>DIGITBOX</strong><span>Founder &amp; CEO</span></div>
+        </div>
+        <div class="stage-item card card-exp card-exp-2" data-in="0.18" data-out="0.38" data-fx="140" data-fy="0">
+          <span class="card-icon"><iconify-icon icon="mdi:office-building-outline"></iconify-icon></span>
+          <div><strong>مؤسسة الإيمان</strong><span>Product Engineer</span></div>
+        </div>
+        <div class="stage-item card card-exp card-exp-3" data-in="0.22" data-out="0.38" data-fx="140" data-fy="30">
+          <span class="card-icon"><iconify-icon icon="mdi:certificate-outline"></iconify-icon></span>
+          <div><strong>NTI · Certified</strong><span>Mobile App Development · 95%</span></div>
+        </div>
+        <div class="stage-item card card-about" data-in="0.2" data-out="0.38" data-fx="-120" data-fy="40">
+          <p>Polished UX, scalable architecture and measurable performance gains — on Android &amp; iOS.</p>
+        </div>
+
+        <!-- Step 2: tech stack orbiting the head -->
+        <span class="stage-item tech tech-1" data-in="0.38" data-out="0.66" data-fx="-200" data-fy="-120"><iconify-icon icon="devicon:flutter"></iconify-icon><b>Flutter</b></span>
+        <span class="stage-item tech tech-2" data-in="0.41" data-out="0.66" data-fx="200" data-fy="-120"><iconify-icon icon="logos:dart"></iconify-icon><b>Dart</b></span>
+        <span class="stage-item tech tech-3" data-in="0.44" data-out="0.66" data-fx="-220" data-fy="0"><iconify-icon icon="logos:firebase-icon"></iconify-icon><b>Firebase</b></span>
+        <span class="stage-item tech tech-4" data-in="0.47" data-out="0.66" data-fx="220" data-fy="0"><iconify-icon icon="logos:nodejs-icon"></iconify-icon><b>Node.js</b></span>
+        <span class="stage-item tech tech-5" data-in="0.5" data-out="0.66" data-fx="-200" data-fy="120"><iconify-icon icon="mdi:cube-outline"></iconify-icon><b>Bloc</b></span>
+        <span class="stage-item tech tech-6" data-in="0.53" data-out="0.66" data-fx="200" data-fy="120"><iconify-icon icon="logos:git-icon"></iconify-icon><b>Git</b></span>
+        <span class="stage-item tech tech-7" data-in="0.45" data-out="0.66" data-fx="0" data-fy="-160"><iconify-icon icon="logos:android-icon"></iconify-icon><b>Android</b></span>
+        <span class="stage-item tech tech-8" data-in="0.49" data-out="0.66" data-fx="0" data-fy="-160"><iconify-icon icon="mdi:apple"></iconify-icon><b>iOS</b></span>
+        <div class="stage-item stage-caption" data-in="0.4" data-out="0.66" data-fx="0" data-fy="40">
+          <span class="card-label">My stack</span>
+        </div>
+
+        <!-- Step 3: shipped work + call to action -->
+        <div class="stage-item card card-stat" data-in="0.66" data-fx="-140" data-fy="0">
+          <strong data-count="15">15</strong>
+          <span>products built<br>&amp; shipped</span>
+        </div>
+        <a href="#projects" class="stage-item shot shot-1" data-in="0.69" data-fx="-160" data-fy="80" aria-label="Foorira project">
+          <img src="assets/foorira.webp" alt="" width="210" height="118" loading="lazy" decoding="async"><span>Foorira</span>
+        </a>
+        <a href="#projects" class="stage-item shot shot-2" data-in="0.72" data-fx="160" data-fy="-80" aria-label="GoTawfeer project">
+          <img src="assets/project-gotawfeer.webp" alt="" width="210" height="118" loading="lazy" decoding="async"><span>GoTawfeer</span>
+        </a>
+        <a href="#projects" class="stage-item shot shot-3" data-in="0.75" data-fx="160" data-fy="80" aria-label="Sweetna project">
+          <img src="assets/project-sweetna.webp" alt="" width="210" height="118" loading="lazy" decoding="async"><span>Sweetna</span>
+        </a>
+        <div class="stage-item stage-cta" data-in="0.8" data-fx="0" data-fy="60">
           <div class="hero-actions">
             <a class="btn btn-primary" href="#projects">View Projects</a>
-            <a class="btn btn-secondary" href="assets/Belal_Mohamed_CV.pdf" download>Download CV <iconify-icon
-                icon="mdi:download" class="btn-icon"></iconify-icon></a>
+            <a class="btn btn-secondary" href="assets/Belal_Mohamed_CV.pdf" download>Download CV <iconify-icon icon="mdi:download" class="btn-icon"></iconify-icon></a>
           </div>
-        </article>
-
-        <aside class="hero-panel reveal-right">
-          <img src="assets/profile.png" alt="Portrait of Belal Mohamed" loading="lazy" width="520" height="520">
-          <ul class="hero-metrics hero-socials">
-            <li class="hero-social-card">
-              <a href="https://github.com/belalMohamedDev" target="_blank" rel="noopener" aria-label="GitHub">
-                <iconify-icon icon="mdi:github"></iconify-icon>
-                <span>GitHub</span>
-              </a>
-            </li>
-            <li class="hero-social-card">
-              <a href="https://wa.me/201069225923" target="_blank" rel="noopener" aria-label="WhatsApp">
-                <iconify-icon icon="mdi:whatsapp"></iconify-icon>
-                <span>WhatsApp</span>
-              </a>
-            </li>
-            <li class="hero-social-card">
-              <a href="https://www.linkedin.com/in/belalmohameddev" target="_blank" rel="noopener" aria-label="LinkedIn">
-                <iconify-icon icon="mdi:linkedin"></iconify-icon>
-                <span>LinkedIn</span>
-              </a>
-            </li>
-            <li class="hero-social-card">
-              <a href="mailto:belalmohameddev@gmail.com" aria-label="Email">
-                <iconify-icon icon="mdi:gmail"></iconify-icon>
-                <span>Gmail</span>
-              </a>
-            </li>
+          <ul class="stage-socials">
+            <li><a href="https://github.com/belalMohamedDev" target="_blank" rel="noopener" aria-label="GitHub"><iconify-icon icon="mdi:github"></iconify-icon></a></li>
+            <li><a href="https://wa.me/201069225923" target="_blank" rel="noopener" aria-label="WhatsApp"><iconify-icon icon="mdi:whatsapp"></iconify-icon></a></li>
+            <li><a href="https://www.linkedin.com/in/belalmohameddev" target="_blank" rel="noopener" aria-label="LinkedIn"><iconify-icon icon="mdi:linkedin"></iconify-icon></a></li>
+            <li><a href="mailto:belalmohameddev@gmail.com" aria-label="Email"><iconify-icon icon="mdi:gmail"></iconify-icon></a></li>
           </ul>
-        </aside>
+        </div>
+
+        <div class="stage-progress" aria-hidden="true"><span></span></div>
       </div>
     </section>
 
     <section id="about" class="section">
       <div class="container">
-        <header class="section-head section-head-center reveal">
-          <h2>About Me</h2>
+        <header class="section-head reveal">
+          <p class="eyebrow">About</p>
+          <h2>Turning ideas into smooth, reliable mobile apps.</h2>
         </header>
         <div class="about-layout">
-          <article class="about-media-card reveal-left">
-            <div class="about-photo-wrap">
-              <img src="assets/profile.png" alt="Belal Mohamed profile photo" loading="lazy" width="520" height="520">
+          <article class="about-facts reveal-left" aria-label="Quick facts">
+            <div class="about-facts-head">
+              <img src="assets/profile.webp" alt="" width="64" height="64" loading="lazy" decoding="async">
+              <div>
+                <strong>Belal Mohamed</strong>
+                <span>Product Engineer</span>
+              </div>
+            </div>
+            <ul class="facts-list">
+              <li><iconify-icon icon="mdi:map-marker-outline"></iconify-icon><span>Based in</span><b>Zagazig, Egypt</b></li>
+              <li><iconify-icon icon="mdi:briefcase-outline"></iconify-icon><span>Now at</span><b>DIGITBOX · مؤسسة الإيمان</b></li>
+              <li><iconify-icon icon="mdi:calendar-check-outline"></iconify-icon><span>Building since</span><b>2021</b></li>
+              <li><iconify-icon icon="mdi:school-outline"></iconify-icon><span>Education</span><b>BSc Computer Science</b></li>
+            </ul>
+            <div class="facts-stats">
+              <div><strong>15</strong><span>Projects</span></div>
+              <div><strong>2</strong><span>Stores</span></div>
+              <div><strong>5</strong><span>Roles</span></div>
             </div>
           </article>
           <article class="about-content-card reveal-right">
             <p>
-              Hi! I am <strong>Belal Mohamed</strong>, a <strong>Flutter Developer</strong> who loves turning ideas into
+              Hi! I am <strong>Belal Mohamed</strong>, a <strong>Product Engineer</strong> and the founder of <strong>DIGITBOX</strong>, with a Flutter background. I love turning ideas into
               smooth, beautiful mobile apps. I specialize in crafting high-performance, user-friendly experiences for
               Android and iOS.
             </p>
@@ -137,11 +250,35 @@
         </header>
         <div class="timeline">
           <article class="timeline-item reveal">
+            <span class="timeline-icon" aria-hidden="true"><iconify-icon icon="mdi:rocket-launch-outline"></iconify-icon></span>
+            <h3>Founder &amp; CEO | DIGITBOX</h3>
+            <p class="timeline-meta">Current role · My company</p>
+            <ul class="timeline-points">
+              <li>Founded DIGITBOX to design and build software products for businesses.</li>
+              <li>Lead product, engineering and delivery for <strong>Tawla v2</strong>, <strong>Derastak (EduTrack v2)</strong> and
+                <strong>Elshinawy Soft</strong>.</li>
+            </ul>
+          </article>
+          <article class="timeline-item reveal">
+            <span class="timeline-icon" aria-hidden="true"><iconify-icon icon="mdi:rocket-launch"></iconify-icon></span>
+            <h3>Product Engineer | مؤسسة الإيمان</h3>
+            <p class="timeline-meta">Current role</p>
+            <ul class="timeline-points">
+              <li>Working as a Product Engineer, owning features end to end — from understanding the business need to
+                shipping the release.</li>
+              <li>Building and evolving the group&rsquo;s products: <strong>صفا أجرو</strong>,
+                <strong>موظفين الإيمان</strong>, <strong>الإيمان مبيعات</strong>, the construction project
+                management system and the group website.</li>
+              <li>Integrating business systems with <strong>SAP</strong> (OData / CPI) for attendance, pricing and
+                sales.</li>
+            </ul>
+          </article>
+          <article class="timeline-item reveal">
             <span class="timeline-icon" aria-hidden="true"><iconify-icon icon="mdi:briefcase"></iconify-icon></span>
             <h3>Flutter Developer (Part-time) | اشهار التسويقية</h3>
-            <p class="timeline-meta">Oct 2025 - Present | Remote, Saudi Arabia</p>
+            <p class="timeline-meta">Late 2025 | Remote, Saudi Arabia</p>
             <ul class="timeline-points">
-              <li>Serve as a core team member on the GoTawfeer e-commerce platform, collaborating with backend engineers
+              <li>Served as a core team member on the GoTawfeer e-commerce platform, collaborating with backend engineers
                 in a professional remote environment.</li>
               <li>Led development of product browsing, cart management, and full checkout flow, improving UX across
                 Android and iOS.</li>
@@ -156,14 +293,14 @@
             <span class="timeline-icon" aria-hidden="true"><iconify-icon
                 icon="mdi:briefcase-check"></iconify-icon></span>
             <h3>Flutter Developer | App Pump</h3>
-            <p class="timeline-meta">2023 - Present | Zagazig, Egypt</p>
+            <p class="timeline-meta">2023 - 2025 | Zagazig, Egypt</p>
             <ul class="timeline-points">
-              <li>Working as a Flutter Developer at App Pump, contributing to building and maintaining mobile
+              <li>Worked as a Flutter Developer at App Pump, building and maintaining mobile
                 applications in a collaborative environment</li>
-              <li>Developing scalable and production-ready mobile apps with clean and maintainable architecture</li>
-              <li>Integrating REST APIs and handling backend communication efficiently</li>
-              <li>Improving app performance and user experience across different devices</li>
-              <li>Collaborating with team members to deliver high-quality features and production releases</li>
+              <li>Developed scalable, production-ready mobile apps with clean and maintainable architecture</li>
+              <li>Integrated REST APIs and handled backend communication efficiently</li>
+              <li>Improved app performance and user experience across different devices</li>
+              <li>Collaborated with the team to deliver high-quality features and production releases</li>
             </ul>
           </article>
           <article class="timeline-item reveal">
@@ -186,7 +323,7 @@
 
     <section id="education" class="section">
       <div class="container">
-        <header class="section-head section-head-center reveal">
+        <header class="section-head reveal">
           <p class="eyebrow">Education</p>
           <h2>Academic and professional learning journey.</h2>
         </header>
@@ -195,18 +332,23 @@
             <div class="education-icon" aria-hidden="true">
               <iconify-icon icon="mdi:school-outline"></iconify-icon>
             </div>
-            <h3>Flutter Development Track | National Telecommunication Institute (NTI)</h3>
-            <p class="education-meta">Jan 2026 - Present | Zagazig, Egypt</p>
+            <h3>Mobile App Development | Digital Egypt Youth Program – NTI</h3>
+            <p class="education-meta">Feb 2026 - May 2026 | Completed · Score 95%</p>
             <p>
-              Advanced Flutter training focused on Bloc, Clean Architecture, API Integration, and production-level
-              development practices.
+              Completed the Digital Egypt Youth Program by the Ministry of Communications and IT and the National
+              Telecommunication Institute: 90 technical hours of mobile app development (Bloc, Clean Architecture,
+              API integration) plus 30 hours of freelancing coaching.
             </p>
             <ul class="education-tags">
               <li>Flutter</li>
               <li>Bloc</li>
               <li>Clean Architecture</li>
               <li>API Integration</li>
+              <li>Freelancing</li>
             </ul>
+            <a class="education-cert" href="assets/nti-certificate.webp" target="_blank" rel="noopener">
+              <iconify-icon icon="mdi:certificate-outline"></iconify-icon> View certificate
+            </a>
           </article>
 
           <article class="education-card reveal">
@@ -236,6 +378,29 @@
           <h2>Technical stack I use to build production apps.</h2>
         </header>
         <div class="skills-groups">
+          <article class="skill-group reveal">
+            <h3>Web, Desktop &amp; Backend</h3>
+            <ul class="skill-tags">
+              <li><span class="skill-icon"><iconify-icon icon="logos:react"></iconify-icon></span><span>React &amp; TypeScript</span></li>
+              <li><span class="skill-icon"><iconify-icon icon="logos:electron"></iconify-icon></span><span>Electron (Desktop)</span></li>
+              <li><span class="skill-icon"><iconify-icon icon="logos:laravel"></iconify-icon></span><span>Laravel / PHP</span></li>
+              <li><span class="skill-icon"><iconify-icon icon="logos:dotnet"></iconify-icon></span><span>ASP.NET Core</span></li>
+              <li><span class="skill-icon"><iconify-icon icon="logos:nodejs-icon"></iconify-icon></span><span>Node.js &amp; Express</span></li>
+              <li><span class="skill-icon"><iconify-icon icon="logos:mysql-icon"></iconify-icon></span><span>MySQL &amp; SQL Server</span></li>
+              <li><span class="skill-icon"><iconify-icon icon="simple-icons:prisma"></iconify-icon></span><span>SQLite &amp; Prisma</span></li>
+              <li><span class="skill-icon"><iconify-icon icon="logos:tailwindcss-icon"></iconify-icon></span><span>Tailwind CSS</span></li>
+            </ul>
+          </article>
+          <article class="skill-group reveal">
+            <h3>Integrations &amp; Product</h3>
+            <ul class="skill-tags">
+              <li><span class="skill-icon"><iconify-icon icon="mdi:transit-connection-variant"></iconify-icon></span><span>SAP OData / CPI</span></li>
+              <li><span class="skill-icon"><iconify-icon icon="mdi:fingerprint"></iconify-icon></span><span>Fingerprint attendance devices</span></li>
+              <li><span class="skill-icon"><iconify-icon icon="mdi:printer-pos-outline"></iconify-icon></span><span>POS hardware (printers, scales, drawers)</span></li>
+              <li><span class="skill-icon"><iconify-icon icon="mdi:cloud-sync-outline"></iconify-icon></span><span>Offline-first &amp; cloud sync</span></li>
+              <li><span class="skill-icon"><iconify-icon icon="mdi:lightbulb-on-outline"></iconify-icon></span><span>Product discovery &amp; delivery</span></li>
+            </ul>
+          </article>
           <article class="skill-group reveal">
             <h3>Core Skills</h3>
             <ul class="skill-tags">
@@ -376,13 +541,13 @@
 
     <section id="services" class="section">
       <div class="container">
-        <header class="section-head section-head-center reveal">
+        <header class="section-head reveal">
           <p class="eyebrow">Services</p>
           <h2>How I can help your product.</h2>
         </header>
         <div class="services-grid">
           <article class="card service-card reveal">
-            <div class="service-icon" aria-hidden="true"><iconify-icon icon="logos:flutter"></iconify-icon></div>
+            <div class="service-icon" aria-hidden="true"><iconify-icon icon="devicon:flutter"></iconify-icon></div>
             <h3>Flutter App Development</h3>
             <p>End-to-end Flutter apps for Android and iOS with scalable architecture and production-ready quality.</p>
             <ul class="service-list">
@@ -437,9 +602,191 @@
           <h2>Real products shipped with measurable impact.</h2>
         </header>
         <div class="projects-grid">
+          <article class="project-card reveal" data-company="digitbox">
+            <div class="project-cover project-cover-tawla2">
+              <img src="assets/tawla-v2.webp" alt="Tawla logo" loading="lazy" decoding="async" width="520" height="300">
+            </div>
+            <span class="project-company">DIGITBOX</span>
+            <h3>Tawla v2</h3>
+            <p class="project-type">Restaurant &amp; Supermarket POS &mdash; Desktop, Android &amp; iOS</p>
+            <ul class="project-tags">
+              <li>React</li>
+              <li>Electron</li>
+              <li>Express</li>
+              <li>SQLite</li>
+              <li>Prisma</li>
+              <li>Flutter</li>
+            </ul>
+            <p>
+              Offline-first point-of-sale for restaurants and supermarkets, with multi-branch cloud sync and an owner mobile app to monitor branches and change prices.
+            </p>
+            <p>
+              Covers POS and delivery, orders and coupons, inventory and suppliers, shifts, payroll and reports. The supermarket edition adds scales, pole displays, cash drawers, installments and production. Ships with a table-ordering app and a caller-ID app.
+            </p>
+          </article>
+          <article class="project-card reveal" data-company="digitbox">
+            <div class="project-cover project-cover-derastak">
+              <img src="assets/derastak.webp" alt="Derastak / EduOps logo" loading="lazy" decoding="async" width="520" height="300">
+            </div>
+            <span class="project-company">DIGITBOX</span>
+            <h3>Derastak (EduTrack v2)</h3>
+            <p class="project-type">Education Management System &mdash; Windows Desktop</p>
+            <ul class="project-tags">
+              <li>Electron</li>
+              <li>React</li>
+              <li>TypeScript</li>
+              <li>SQLite</li>
+              <li>Prisma</li>
+              <li>Arabic / English</li>
+            </ul>
+            <p>
+              Desktop system for teachers and assistants to manage students, groups, sessions, attendance and payments.
+            </p>
+            <p>
+              Barcode attendance, CSV student import, automatic session generation, cash payments and expenses, exams and online exams, a tamper-evident audit log and built-in licensing.
+            </p>
+          </article>
+          <article class="project-card reveal" data-company="digitbox">
+            <div class="project-cover project-cover-elshinawy">
+              <img src="assets/elshinawy.webp" alt="El-Shinawy Soft logo" loading="lazy" decoding="async" width="520" height="300">
+            </div>
+            <span class="project-company">DIGITBOX</span>
+            <h3>El-Shinawy Soft</h3>
+            <p class="project-type">Store, Accounting &amp; POS System &mdash; Web</p>
+            <ul class="project-tags">
+              <li>PHP</li>
+              <li>MySQL</li>
+              <li>Barcode printing</li>
+              <li>Licensing</li>
+            </ul>
+            <p>
+              Store management, accounting and point-of-sale system with a setup and licensing wizard.
+            </p>
+            <p>
+              Sales and purchase orders, products and warehouses with barcode label printing, customers and suppliers, chart of accounts, daily journal, treasury, cost centers and profit reports.
+            </p>
+          </article>
+          <article class="project-card reveal" data-company="aleman">
+            <div class="project-cover project-cover-aleman">
+              <img src="assets/aleman-hr.webp" alt="Al-Eman logo" loading="lazy" decoding="async" width="520" height="300">
+            </div>
+            <span class="project-company">مؤسسة الإيمان</span>
+            <h3>موظفين الإيمان</h3>
+            <p class="project-type">HR &amp; Operations Platform &mdash; Web, Android &amp; iOS</p>
+            <ul class="project-tags">
+              <li>React</li>
+              <li>TypeScript</li>
+              <li>PHP</li>
+              <li>MySQL</li>
+              <li>Flutter</li>
+              <li>SAP OData</li>
+            </ul>
+            <p>
+              The group&rsquo;s HR and operations system: a web portal (installable PWA) plus an employee mobile app.
+            </p>
+            <p>
+              About 50 modules, including employees, attendance synced from SAP and fingerprint devices, payroll and loans, fleet and driver training, HSE (injuries, near-miss, permits), recruitment, phone bills and legal cases.
+            </p>
+            <div class="project-links">
+              <span class="project-badge">In production</span>
+            </div>
+          </article>
+          <article class="project-card reveal" data-company="aleman">
+            <div class="project-cover project-cover-light">
+              <img src="assets/aleman-sales.webp" alt="Al-Eman Feed app icon" loading="lazy" decoding="async" width="520" height="300">
+            </div>
+            <span class="project-company">مؤسسة الإيمان</span>
+            <h3>الإيمان مبيعات</h3>
+            <p class="project-type">Feed Ordering App + Admin Dashboard &mdash; Android, iOS &amp; Web</p>
+            <ul class="project-tags">
+              <li>Flutter</li>
+              <li>Bloc</li>
+              <li>ASP.NET Core</li>
+              <li>SQL Server</li>
+              <li>React</li>
+              <li>Firebase</li>
+            </ul>
+            <p>
+              B2C / B2B ordering app for Al-Eman animal feed, with an admin dashboard and a .NET API connected to SAP prices.
+            </p>
+            <p>
+              Product catalog, cart and wishlist, orders with bank-transfer receipt review, truck-load promotions, delivery or factory pickup, push notifications and a voice assistant.
+            </p>
+            <div class="project-links">
+              <span class="project-badge">In production</span>
+            </div>
+          </article>
+          <article class="project-card reveal" data-company="aleman">
+            <div class="project-cover project-cover-light">
+              <img src="assets/saffa-agro.webp" alt="Saffa Agro Logistics logo" loading="lazy" decoding="async" width="520" height="300">
+            </div>
+            <span class="project-company">مؤسسة الإيمان</span>
+            <h3>صفا أجرو</h3>
+            <p class="project-type">Port &amp; Shipping Logistics &mdash; Web, Android &amp; iOS</p>
+            <ul class="project-tags">
+              <li>Laravel</li>
+              <li>MySQL</li>
+              <li>React</li>
+              <li>TypeScript</li>
+              <li>Flutter</li>
+            </ul>
+            <p>
+              Saffa Agro Logistics: a port and shipping logistics system, rebuilt from a legacy PHP app into a Laravel API, a React web app and a Flutter app.
+            </p>
+            <p>
+              Voyages with laytime and demurrage calculation, truck trips, cashier receipts and invoicing, permits and certificates, warehouse storage fees and reports.
+            </p>
+            <div class="project-links">
+              <span class="project-badge project-badge-red">In development</span>
+            </div>
+          </article>
+          <article class="project-card reveal" data-company="aleman">
+            <div class="project-cover project-cover-aleman">
+              <img src="assets/aleman-construction.webp" alt="Al-Eman Group logo" loading="lazy" decoding="async" width="520" height="300">
+            </div>
+            <span class="project-company">مؤسسة الإيمان</span>
+            <h3>Construction Project Management</h3>
+            <p class="project-type">Project Controls System &mdash; Web (Arabic, RTL)</p>
+            <ul class="project-tags">
+              <li>PHP</li>
+              <li>MySQL</li>
+              <li>Bootstrap</li>
+              <li>Chart.js</li>
+              <li>MS Project / P6 XML</li>
+            </ul>
+            <p>
+              Construction project management for the Al-Eman Group, modelled on SAP PS, Odoo Project and Primavera P6.
+            </p>
+            <p>
+              WBS and project statuses, budget vs. commitments, critical path (CPM) and baselines, purchasing, warehouses and cash custody, equipment rental approvals and earned-value reports. Syncs employees from the HR system.
+            </p>
+          </article>
+          <article class="project-card reveal" data-company="aleman">
+            <div class="project-cover project-cover-light">
+              <img src="assets/aleman-website.webp" alt="Al-Eman Feed Group icon" loading="lazy" decoding="async" width="520" height="300">
+            </div>
+            <span class="project-company">مؤسسة الإيمان</span>
+            <h3>Al-Eman Feed Group Website</h3>
+            <p class="project-type">Corporate &amp; E-commerce Website &mdash; Web</p>
+            <ul class="project-tags">
+              <li>React</li>
+              <li>Vite</li>
+              <li>Tailwind</li>
+              <li>Framer Motion</li>
+            </ul>
+            <p>
+              Marketing and e-commerce website for the group&rsquo;s poultry, livestock and rabbit feed.
+            </p>
+            <p>
+              Product catalog and detail pages, cart and checkout, wishlist and profile, careers and contact pages.
+            </p>
+            <div class="project-links">
+              <span class="project-badge">Live</span>
+            </div>
+          </article>
           <article class="project-card reveal">
             <div class="project-cover project-cover-foorira">
-              <img src="assets/foorira.png" alt="Foorira app screenshot" loading="lazy" width="520" height="300">
+              <img src="assets/foorira.webp" alt="Foorira app screenshot" loading="lazy" decoding="async" width="520" height="300">
             </div>
             <h3>Foorira</h3>
             <p class="project-type">Multi-Vendor Delivery App - iOS &amp; Android (Live)</p>
@@ -466,7 +813,7 @@
           </article>
           <article class="project-card reveal">
             <div class="project-cover project-cover-gotawfeer">
-              <img src="assets/project-gotawfeer.png" alt="GoTawfeer app screenshot" loading="lazy" width="520"
+              <img src="assets/project-gotawfeer.webp" alt="GoTawfeer app screenshot" loading="lazy" decoding="async" width="520"
                 height="300">
             </div>
             <h3>GoTawfeer</h3>
@@ -494,7 +841,7 @@
           </article>
           <article class="project-card reveal">
             <div class="project-cover project-cover-sweetna">
-              <img src="assets/project-sweetna.png" alt="Sweetna app screenshot" loading="lazy" width="520"
+              <img src="assets/project-sweetna.webp" alt="Sweetna app screenshot" loading="lazy" decoding="async" width="520"
                 height="300">
             </div>
             <h3>Sweetna</h3>
@@ -519,7 +866,7 @@
           </article>
           <article class="project-card reveal">
             <div class="project-cover project-cover-ivory">
-              <img src="assets/ivory.png" alt="Ivory Training app screenshot" loading="lazy" width="650" height="400">
+              <img src="assets/ivory.webp" alt="Ivory Training app screenshot" loading="lazy" decoding="async" width="650" height="400">
             </div>
             <h3>Ivory Training</h3>
             <p class="project-type">Professional Training Platform &mdash; Android (Live)</p>
@@ -544,56 +891,8 @@
             </div>
           </article>
           <article class="project-card reveal">
-            <div class="project-cover project-cover-tawla">
-              <img src="assets/tawla.png" alt="Tawla POS screenshot" loading="lazy" width="520" height="300">
-            </div>
-            <h3>Tawla</h3>
-            <p class="project-type">Restaurant &amp; Cafe POS &mdash; Flutter Desktop (Live)</p>
-            <ul class="project-tags">
-              <li>Flutter</li>
-              <li>Dart</li>
-              <li>Bloc</li>
-              <li>SQLite</li>
-              <li>Clean Architecture</li>
-            </ul>
-            <p>
-              A premium, offline-first Restaurant &amp; Cafe Point of Sale (POS) and inventory management system designed for high performance and reliability.
-            </p>
-            <p>
-              Built as a native Flutter Desktop application, featuring custom role-based authentication, local SQLite persistence, hardware-level printer &amp; drawer integration, and a dual-language (EN/AR) RTL interface.
-            </p>
-            <div class="project-links">
-              <span class="project-badge">Completed &amp; Delivered</span>
-            </div>
-          </article>
-          <article class="project-card reveal">
-            <div class="project-cover project-cover-eduops">
-              <img src="assets/eduops.png" alt="EduOps desktop app screenshot" loading="lazy" width="520" height="300">
-            </div>
-            <h3>EduOps <span style="font-size:0.85em;">🎓</span></h3>
-            <p class="project-type">Enterprise Desktop Operations System &mdash; Flutter Desktop (Completed)</p>
-            <ul class="project-tags">
-              <li>Flutter</li>
-              <li>Dart</li>
-              <li>Bloc</li>
-              <li>SQLite</li>
-              <li>Clean Architecture</li>
-            </ul>
-            <p>
-              An enterprise-grade Flutter Desktop management system built for educators to streamline student management,
-              scheduling, attendance scanning, cash payments tracking, grading, and reporting.
-            </p>
-            <p>
-              Built on Clean Architecture with Bloc state management, full Arabic/English RTL/LTR localization,
-              cryptographically-signed audit logs, barcode check-in, and offline-first local SQLite persistence.
-            </p>
-            <div class="project-links">
-              <span class="project-badge">Completed &amp; Delivered</span>
-            </div>
-          </article>
-          <article class="project-card reveal">
             <div class="project-cover project-cover-athr">
-              <img src="assets/athrApp.png" alt="AthrApp blood donation platform screenshot" loading="lazy" width="520"
+              <img src="assets/athrApp.webp" alt="AthrApp blood donation platform screenshot" loading="lazy" decoding="async" width="520"
                 height="300">
             </div>
             <h3>AthrApp</h3>
@@ -619,7 +918,7 @@
           </article>
           <article class="project-card reveal">
             <div class="project-cover project-cover-blossom">
-              <img src="assets/blossom.png" alt="Blossom kids social platform screenshot" loading="lazy" width="520"
+              <img src="assets/blossom.webp" alt="Blossom kids social platform screenshot" loading="lazy" decoding="async" width="520"
                 height="300">
             </div>
             <h3>Blossom</h3>
@@ -645,7 +944,7 @@
           </article>
           <article class="project-card reveal">
             <div class="project-cover project-cover-finder">
-              <img src="assets/project-finder.png" alt="Finder app screenshot" loading="lazy" width="520" height="300">
+              <img src="assets/project-finder.webp" alt="Finder app screenshot" loading="lazy" decoding="async" width="520" height="300">
             </div>
             <h3>Finder</h3>
             <p class="project-type">AI-Powered Face Recognition App - Graduation Project</p>
@@ -674,7 +973,7 @@
 
     <section id="feedback" class="section">
       <div class="container">
-        <header class="section-head section-head-center reveal">
+        <header class="section-head reveal">
           <p class="eyebrow">Feedback</p>
           <h2>What clients say about working with me.</h2>
         </header>
@@ -734,7 +1033,10 @@
           <article class="card reveal">
             <h3>Quick Intro</h3>
             <p>Share your app idea or current bottleneck and I will suggest a practical implementation path.</p>
-            <a class="btn btn-primary" href="mailto:belalmohameddev@gmail.com">Start Conversation</a>
+            <div class="contact-actions">
+              <a class="btn btn-primary" href="mailto:belalmohameddev@gmail.com">Start Conversation</a>
+              <a class="btn btn-secondary" href="https://wa.me/201069225923" target="_blank" rel="noopener"><iconify-icon icon="mdi:whatsapp" class="btn-icon"></iconify-icon> WhatsApp</a>
+            </div>
           </article>
         </div>
       </div>
@@ -753,6 +1055,10 @@
   <script src="js/typing.js" defer></script>
   <script src="js/animations.js" defer></script>
   <script src="js/main.js" defer></script>
+  <script src="js/hero-motion.js" defer></script>
+  <script src="js/stage.js" defer></script>
+  <script src="js/polish.js" defer></script>
+  <script src="js/sections.js" defer></script>
 </body>
 
 </html>

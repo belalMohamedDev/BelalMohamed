@@ -2,7 +2,7 @@
   const target = document.getElementById("typedText");
   if (!target) return;
 
-  const words = ["Flutter Developer", "Mobile Engineer", "Performance-Driven Builder", "Product-Focused Problem Solver"];
+  const words = ["Product Engineer", "Flutter Developer", "Mobile Engineer", "Product-Focused Problem Solver"];
   let wordIndex = 0;
   let charIndex = 0;
   let deleting = false;

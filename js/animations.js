@@ -202,11 +202,20 @@
     });
   }
 
+  /* Read the accent colour once, and again only when the theme changes */
+  var accentColor = "#81A6C6";
+  function readAccent() {
+    accentColor = getComputedStyle(document.documentElement)
+      .getPropertyValue("--accent").trim() || "#81A6C6";
+  }
+  readAccent();
+  new MutationObserver(readAccent).observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["data-theme"]
+  });
+
   function drawParticles() {
     ctx.clearRect(0, 0, W, H);
-
-    var accentColor = getComputedStyle(document.documentElement)
-      .getPropertyValue("--accent").trim() || "#81A6C6";
 
     for (var i = 0; i < particles.length; i++) {
       var p = particles[i];

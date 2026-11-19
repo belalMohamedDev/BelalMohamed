@@ -1,0 +1,380 @@
+/* ══════════════════════════════════════════════════════════
+   POLISH — layout + consistency fixes for the sections below
+   the hero. Loaded last so it can refine earlier rules.
+   ══════════════════════════════════════════════════════════ */
+
+/* ── Header: inner row must fit the 980px pill ──────────── */
+.site-header .nav-container {
+  width: 100%;
+}
+
+/* ── Sections: one rhythm, one heading style ────────────── */
+.section {
+  padding: clamp(64px, 8vw, 96px) 0;
+  scroll-margin-top: 90px;
+}
+
+.section-head {
+  margin-bottom: 2rem;
+  max-width: 940px;
+}
+
+.section-head .eyebrow {
+  margin-bottom: 0.4rem;
+}
+
+.section-head h2 {
+  margin: 0;
+}
+
+/* ── Tags: use the site palette instead of indigo ───────── */
+.education-tags li,
+.project-tags li {
+  border-color: color-mix(in srgb, var(--accent) 38%, var(--border));
+  color: var(--accent-strong);
+  background: color-mix(in srgb, var(--accent) 12%, var(--surface));
+}
+
+/* ── About: facts card ──────────────────────────────────── */
+.about-layout {
+  align-items: stretch;
+}
+
+.about-facts {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  padding: 1.35rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background:
+    radial-gradient(120% 80% at 0% 0%, color-mix(in srgb, var(--accent) 20%, transparent), transparent 60%),
+    var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.about-facts-head {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.about-facts-head img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 15%;
+  border: 3px solid color-mix(in srgb, var(--accent) 55%, var(--surface));
+}
+
+.about-facts-head strong {
+  display: block;
+  font-size: 1.15rem;
+}
+
+.about-facts-head span {
+  font-size: 0.88rem;
+  color: var(--accent-strong);
+  font-weight: 600;
+}
+
+.facts-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.15rem;
+}
+
+.facts-list li {
+  display: grid;
+  grid-template-columns: 1.6rem auto 1fr;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px dashed var(--border);
+  font-size: 0.92rem;
+}
+
+.facts-list li:last-child {
+  border-bottom: 0;
+}
+
+.facts-list iconify-icon {
+  font-size: 1.15rem;
+  color: var(--accent-strong);
+}
+
+.facts-list span {
+  color: var(--text-muted);
+}
+
+.facts-list b {
+  text-align: end;
+  font-weight: 600;
+}
+
+.facts-stats {
+  margin-top: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+}
+
+.facts-stats div {
+  display: grid;
+  justify-items: center;
+  padding: 0.75rem 0.4rem;
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--accent) 10%, var(--surface-alt));
+  border: 1px solid var(--border);
+}
+
+.facts-stats strong {
+  font-size: 1.6rem;
+  line-height: 1.1;
+  color: var(--accent-strong);
+}
+
+.facts-stats span {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.about-content-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* ── Experience: easier to scan ─────────────────────────── */
+.timeline-item h3 {
+  font-size: 1.12rem;
+}
+
+.timeline-meta {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  color: var(--accent-strong);
+}
+
+.timeline-points li {
+  line-height: 1.55;
+}
+
+/* ── Skills: masonry columns, no empty gaps ─────────────── */
+.skills-groups {
+  display: block;
+  columns: 3 280px;
+  column-gap: 1.25rem;
+}
+
+.skill-group {
+  break-inside: avoid;
+  margin-bottom: 1.25rem;
+  display: inline-block;
+  width: 100%;
+}
+
+/* ── Services: four cards in one row, no orphan ─────────── */
+.services-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.service-icon iconify-icon {
+  font-size: 1.25rem;
+}
+
+/* ── Projects: 3 columns, short by default ──────────────── */
+.projects-grid {
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.25rem;
+}
+
+.project-card {
+  padding: 0.9rem 0.9rem 1.1rem;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--accent) 50%, var(--border));
+}
+
+.project-card h3 {
+  margin: 0.2rem 0 0;
+  font-size: 1.2rem;
+}
+
+.project-cover {
+  height: 190px;
+}
+
+.project-cover img {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-card:hover .project-cover img {
+  transform: scale(1.05);
+}
+
+.project-card p {
+  line-height: 1.6;
+}
+
+.project-more[hidden] {
+  display: none;
+}
+
+.project-toggle {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.3rem 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--accent-strong);
+  cursor: pointer;
+}
+
+.project-toggle iconify-icon {
+  transition: transform 0.25s ease;
+}
+
+.project-toggle[aria-expanded="true"] iconify-icon {
+  transform: rotate(180deg);
+}
+
+.project-links a {
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--border));
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.project-links a:hover {
+  background: var(--accent);
+  color: #08121c;
+}
+
+/* ── Feedback: quote mark + aligned footers ─────────────── */
+.feedback-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 1.3rem;
+}
+
+.feedback-card::before {
+  content: "\201C";
+  position: absolute;
+  top: 0.2rem;
+  right: 1rem;
+  font-size: 4.5rem;
+  line-height: 1;
+  font-family: Georgia, serif;
+  color: color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+.feedback-card p {
+  flex: 1;
+}
+
+/* ── Contact ────────────────────────────────────────────── */
+.contact-grid .card {
+  padding: 1.35rem;
+}
+
+.contact-list a {
+  color: var(--text);
+  text-align: end;
+  overflow-wrap: anywhere;
+}
+
+.contact-list a:hover {
+  color: var(--accent-strong);
+}
+
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 0.5rem;
+}
+
+/* ── Responsive ─────────────────────────────────────────── */
+@media (max-width: 1080px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 920px) {
+  .projects-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-head {
+    margin-bottom: 1.4rem;
+  }
+
+  .facts-list li {
+    grid-template-columns: 1.6rem 1fr;
+  }
+
+  .facts-list b {
+    grid-column: 2;
+    text-align: start;
+  }
+
+  .contact-list li {
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .contact-list a {
+    text-align: start;
+  }
+
+  .contact-actions .btn {
+    flex: 1;
+  }
+}
+
+/* NTI certificate link */
+.education-cert {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.9rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--accent-strong);
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--border));
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.education-cert:hover {
+  background: var(--accent);
+  color: #08121c;
+}
